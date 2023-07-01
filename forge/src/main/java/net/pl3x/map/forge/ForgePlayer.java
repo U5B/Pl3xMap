@@ -68,7 +68,7 @@ public class ForgePlayer extends Player {
 
     @Override
     public @NotNull World getWorld() {
-        ServerLevel level = (ServerLevel) getPlayer().level();
+        ServerLevel level = getPlayer().getLevel();
         String name = level.dimension().location().toString();
         return Pl3xMap.api().getWorldRegistry().getOrDefault(name, () -> new ForgeWorld(level, name));
     }

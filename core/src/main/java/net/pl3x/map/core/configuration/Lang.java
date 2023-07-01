@@ -102,7 +102,7 @@ public final class Lang extends AbstractConfig {
     @Key("command.radiusrender.description")
     public static String COMMAND_RADIUSRENDER_DESCRIPTION = "Render a section of a world";
     @Key("command.radiusrender.starting")
-    public static String COMMAND_RADIUSRENDER_STARTING = "<green>Radius render starting. Check <grey>/map status</grey> for more info";
+    public static String COMMAND_RADIUSRENDER_STARTING = "<green>Radius render starting. Check </grey>/map status</grey> for more info";
 
     @Key("command.reload.description")
     public static String COMMAND_RELOAD_DESCRIPTION = "Reloads the plugin";

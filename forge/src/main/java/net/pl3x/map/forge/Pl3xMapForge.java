@@ -267,7 +267,7 @@ public class Pl3xMapForge extends Pl3xMap {
     protected void loadBlocks() {
         for (Map.Entry<ResourceKey<Block>, Block> entry : this.server.registryAccess().registryOrThrow(Registries.BLOCK).entrySet()) {
             String id = entry.getKey().location().toString();
-            int color = entry.getValue().defaultMapColor().col;
+            int color = entry.getValue().defaultMaterialColor().col;
             getBlockRegistry().register(id, color);
         }
         getBlockRegistry().saveToDisk();
