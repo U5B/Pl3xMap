@@ -33,9 +33,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import net.pl3x.map.core.Pl3xMap;
 import net.pl3x.map.core.markers.JsonObjectWrapper;
 import net.pl3x.map.core.markers.layer.Layer;
 import net.pl3x.map.core.markers.marker.Marker;
@@ -55,38 +52,18 @@ public class UpdateMarkerData extends Task {
 
     private final World world;
     private final Map<@NotNull String, @NotNull Long> lastUpdated = new HashMap<>();
-    private final ExecutorService executor;
-
-    private CompletableFuture<Void> future;
-    private boolean running;
 
     public UpdateMarkerData(@NotNull World world) {
         super(1, true);
         this.world = world;
-        this.executor = Pl3xMap.ThreadFactory.createService("Pl3xMap-Markers");
     }
 
     @Override
     public void run() {
-        if (this.running) {
-            return;
-        }
-        this.running = true;
-        this.future = CompletableFuture.runAsync(() -> {
-            try {
-                parseLayers();
-            } catch (Throwable t) {
-                t.printStackTrace();
-            }
-            this.running = false;
-        }, this.executor);
-    }
-
-    @Override
-    public void cancel() {
-        super.cancel();
-        if (this.future != null) {
-            this.future.cancel(true);
+        try {
+            parseLayers();
+        } catch (Throwable t) {
+            t.printStackTrace();
         }
     }
 
