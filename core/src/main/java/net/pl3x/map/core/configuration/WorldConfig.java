@@ -43,6 +43,11 @@ public final class WorldConfig extends AbstractConfig {
             Enables this world to be rendered on the map.""")
     public boolean ENABLED = true;
 
+    @Key("scan")
+    @Comment("""
+            Periodically scan this world's region files for updates""")
+    public boolean SCAN = true;
+
     @Key("render.renderers")
     @Comment("""
             Renderers to use. Each renderer will render a different

@@ -94,6 +94,9 @@ public class RegionDoubleChecker implements Runnable {
 
         try {
             Pl3xMap.api().getWorldRegistry().forEach(world -> {
+                if (!world.getConfig().ENABLED || !world.getConfig().SCAN) {
+                    return;
+                }
                 Collection<Path> files = world.getRegionFiles();
                 Collection<Point> modifiedRegions = new HashSet<>();
                 for (Path file : files) {
