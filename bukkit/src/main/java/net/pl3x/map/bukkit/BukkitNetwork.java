@@ -29,7 +29,7 @@ import net.pl3x.map.core.network.Constants;
 import net.pl3x.map.core.network.Network;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_20_R3.map.CraftMapRenderer;
+import org.bukkit.craftbukkit.v1_19_R3.map.CraftMapRenderer;
 import org.bukkit.entity.Player;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
@@ -71,7 +71,7 @@ public class BukkitNetwork extends Network {
         out.writeInt(Constants.MAP_DATA);
         out.writeInt(Constants.RESPONSE_SUCCESS);
 
-        MapView map = Bukkit.getMap(id);
+        MapView map = map(id);
         if (map == null) {
             out.writeInt(Constants.ERROR_NO_SUCH_MAP);
             out.writeInt(id);
@@ -105,6 +105,11 @@ public class BukkitNetwork extends Network {
     @Override
     protected <T> void send(T player, ByteArrayDataOutput out) {
         ((Player) player).sendPluginMessage(this.plugin, Network.CHANNEL, out.toByteArray());
+    }
+
+    @SuppressWarnings("deprecation")
+    private MapView map(int id) {
+        return Bukkit.getMap(id);
     }
 
     @SuppressWarnings("deprecation")

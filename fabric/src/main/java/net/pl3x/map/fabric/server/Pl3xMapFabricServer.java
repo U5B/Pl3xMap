@@ -240,7 +240,7 @@ public class Pl3xMapFabricServer extends Pl3xMap implements DedicatedServerModIn
             }
 
             String id = entry.getKey().location().toString();
-            int color = entry.getValue().defaultMapColor().col;
+            int color = entry.getValue().defaultMaterialColor().col;
             getBlockRegistry().register(id, color);
         }
         getBlockRegistry().saveToDisk();
