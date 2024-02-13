@@ -178,9 +178,7 @@ export const handleKeyboardEvent = (e: KeyboardEvent, elements: HTMLElement[]): 
 export function getLangName(prefix: string, name: string) : string {
     if (name.indexOf(':') !== -1) {
         const split = name.split(":");
-        const a = prefix + '.' + split[0] + '.' + name.split(split[0] + ":")[1];
-        console.debug("Lang: " + a);
-        const result = Pl3xMap.instance.langPalette.get(a);
+        const result = Pl3xMap.instance.langPalette.get(prefix + '.' + split[0] + '.' + name.split(split[0] + ":")[1]);
         if (result != null) {
             return result
         }
