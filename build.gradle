@@ -13,8 +13,8 @@ project.version = "$minecraftVersion-$buildNum"
 dependencies {
     compileOnly project(':core')
     compileOnly project(':bukkit')
-    compileOnly project(':fabric')
-    compileOnly project(':forge')
+    // compileOnly project(':fabric')
+    // compileOnly project(':forge')
 }
 
 def copyJavadocAndSources = tasks.register('copyJavadocAndSources', Copy) {
