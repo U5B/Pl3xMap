@@ -229,7 +229,7 @@ public class Colors {
     }
 
     public static int getGrassColor(@NotNull Region region, @NotNull Biome biome, int color, int x, int z) {
-        return sampleNeighbors(region, biome, x, z, (biome2, x2, z2) -> mix(biome2.grass(x2, z2), color));
+        return sampleNeighbors(region, biome, x, z, (biome2, x2, z2) -> biome2.grass(x2, z2));
     }
 
     public static int getWaterColor(@NotNull Region region, @NotNull Biome biome, int x, int z) {
